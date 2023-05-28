@@ -1,0 +1,14 @@
+{
+  "name": "el_carpintero_moderno",
+  "version": "1.0.0",
+  "description": "componente central del proyecto y se encarga de manejar las solicitudes y respuestas de la aplicación móvil. Proporciona una interfaz para acceder a la base de datos de contenido, gestionar usuarios y autenticación, y procesar acciones como guardar recursos favoritos, realizar búsquedas y generar contenido dinámico. La API también puede ser utilizada por desarrolladores externos para integrarla en otras aplicaciones o servicios relacionados con la carpintería.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
