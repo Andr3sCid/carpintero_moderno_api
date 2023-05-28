@@ -3,7 +3,7 @@ const { MongoClient, ObjectId, ServerApiVersion } = require("mongodb");
 class DbConnection {
   constructor() {
     const uri =
-      "mongodb+srv://AndresCid:28TdtyL396Rw5ZGm@CarpinteroModerno.9ubfxv9.mongodb.net/?retryWrites=true&w=majority";
+      "mongodb+srv://Andr3sCid:dRZ2U6OKbrIQCfUb@cluster0.dd2svyc.mongodb.net/?retryWrites=true&w=majority";
 
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     this.client = new MongoClient(uri, {
@@ -18,10 +18,10 @@ class DbConnection {
   async createUser(user) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de usuarios
       const collection = db.collection("user");
@@ -37,17 +37,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async getUserById(userId) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de usuarios
       const collection = db.collection("user");
@@ -63,17 +63,43 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
+    }
+  }
+
+  async getUserByUserName(UserName) {
+    try {
+      // Conectar a la base de datos
+      await this.client.connect();
+
+      // Acceder a la base de datos
+      const db = this.client.db("Carpintero-Moderno");
+
+      // Acceder a la colección de usuarios
+      const collection = db.collection("user");
+
+      // Buscar el usuario por su ID
+      const user = await collection.findOne({ userName: UserName });
+
+      // Retornar el usuario encontrado
+      return user;
+    } catch (error) {
+      // Manejar errores aquí
+      console.error("Error al obtener el usuario por ID:", error);
+      throw error;
+    } finally {
+      // Desconectar de la base de datos
+      await this.client.close();
     }
   }
 
   async updateUser(userId, updatedUser) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de usuarios
       const collection = db.collection("user");
@@ -92,17 +118,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async deleteUser(userId) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db =this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de usuarios
       const collection = db.collection("user");
@@ -118,17 +144,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async getAllUsers() {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de usuarios
       const collection = db.collection("user");
@@ -144,17 +170,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async createPublication(publication) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -170,17 +196,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async getPublicationById(publicationId) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -196,17 +222,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async updatePublication(publicationId, updatedPublication) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -225,17 +251,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async deletePublication(publicationId) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -253,17 +279,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async getAllpublication() {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -279,17 +305,17 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 
   async getpublicationByAuthor(authorId) {
     try {
       // Conectar a la base de datos
-      await client.connect();
+      await this.client.connect();
 
       // Acceder a la base de datos
-      const db = client.db("CarpinteroModernoData");
+      const db = this.client.db("Carpintero-Moderno");
 
       // Acceder a la colección de publicaciones
       const collection = db.collection("publication");
@@ -305,7 +331,7 @@ class DbConnection {
       throw error;
     } finally {
       // Desconectar de la base de datos
-      await client.close();
+      await this.client.close();
     }
   }
 }
